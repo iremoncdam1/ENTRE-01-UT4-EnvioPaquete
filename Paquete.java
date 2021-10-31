@@ -107,7 +107,7 @@ public class Paquete
         String texto;
         texto = String.format("Descripción del paquete\n%20s%10.2f(cm)\n%20s%10.2f(cm)", "Alto:", dimension.getAlto(), "Ancho:", dimension.getAncho());
         texto += String.format("\n%20s%10.2f(cm)\n%20s%10.2f(Kg)","Largo:",dimension.getLargo(), "Peso real:", peso);
-        texto += String.format("\n%20s%10.2f(cm3)\n%20s%10.2f(Kg)", "Volumen:", calcularVolumen(), "Peso volumétrico:",calcularPesoVolumetrico());
+        texto += String.format("\n%20s%10.2f(cm3)\n%20s%10.2f(Kg)\n\n", "Volumen:", calcularVolumen(), "Peso volumétrico:",calcularPesoVolumetrico());
         return texto;
     }
     
