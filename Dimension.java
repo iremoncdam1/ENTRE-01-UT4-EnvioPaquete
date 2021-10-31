@@ -17,7 +17,6 @@ public class Dimension
         this.alto = alto;
         this.ancho = ancho;
         this.largo = largo;
-
     }   
 
     /**
@@ -54,9 +53,8 @@ public class Dimension
      * (leer enunciado)
      */
     public String toString() {
-        //String texto = ("Alto: %5.2f",dimension.getAlto());
-        return null;
-
+        String texto = String.format("%20s%10.2f(cm)\n%20s%10.2f(cm)\n%20s%10.2f(cm)", "Alto:", alto, "Ancho:", ancho, "Largo:", largo);
+        return texto;
     }
 
     /**
@@ -67,6 +65,4 @@ public class Dimension
     public void print() {
         System.out.println(this.toString());
     }
-
-    
 }
