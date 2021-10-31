@@ -3,7 +3,7 @@ import java.util.Random;
  *  Un objeto de esta clase guarda los datos de un
  *  paquete
  * 
- * @author - 
+ * @author - Iratxe Remón
  *  
  */
 public class Paquete 
@@ -18,9 +18,8 @@ public class Paquete
      * alto, ancho, largo (en cm) y peso 8 Kg
      */
     public Paquete()    {
-        //TODO
-         
-
+        dimension = new Dimension(40,30,50);
+        peso = 8;
     }
 
     /**
@@ -30,8 +29,8 @@ public class Paquete
      *  Se crea aquí el generador
      */
     public Paquete(double alto, double ancho, double largo)    {
-        //TODO
-
+        dimension = new Dimension (alto,ancho,largo);
+        peso = (int) (Math.random() * 7 ) + 2;
     }
 
     /**
@@ -40,8 +39,8 @@ public class Paquete
      * 
      */
     public Paquete(Dimension dimension, double peso)    {
-        //TODO
-
+        this.dimension = dimension;
+        this.peso = peso;
     }
 
     /**
