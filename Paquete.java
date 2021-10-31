@@ -30,7 +30,8 @@ public class Paquete
      */
     public Paquete(double alto, double ancho, double largo)    {
         dimension = new Dimension (alto,ancho,largo);
-        peso = (int) (Math.random() * 7 ) + 2;
+        generador = new Random();
+        peso = (generador.nextDouble() * 7) + 2;
     }
 
     /**
@@ -48,7 +49,6 @@ public class Paquete
      */
     public Dimension getDimension() {
         return this.dimension;
-
     }
 
     /**
@@ -56,7 +56,6 @@ public class Paquete
      */
     public double getPeso() {
         return this.peso;
-
     }
 
     /**
@@ -64,9 +63,8 @@ public class Paquete
      * El volumen = alto x ancho x largo
      */
     public double calcularVolumen() {
-       //TODO
-       return 0;
-
+       double volumen = dimension.getAlto() * dimension.getAncho() * dimension.getLargo();
+       return volumen;
     }
 
     /**
@@ -74,9 +72,8 @@ public class Paquete
      * Peso volumétrico = volumen del paquete / 5000
      */
     public double calcularPesoVolumetrico() {
-        //TODO
-       return 0;
-
+       double pesoVolumetrico = calcularVolumen()/5000;
+       return pesoVolumetrico;
     }
 
     /**
@@ -85,20 +82,21 @@ public class Paquete
      *      
      */
     public double calcularPesoFacturable() {
-        //TODO
-       return 0;
-
+       double pesoFacturable = calcularPesoVolumetrico();
+       if (peso > calcularPesoVolumetrico())
+       {
+           pesoFacturable = peso;    
+       }
+       return pesoFacturable;
     }
-
 
     /**
      * Devuelve una copia exacta al objeto actual
      * Se obtienen copias también de los objetos que contenga
      */
     public Paquete obtenerCopia() {
-        //TODO
-       return null;
-
+       Paquete paquete = new Paquete(dimension, peso);
+       return paquete;
     }
 
     /**
@@ -106,9 +104,11 @@ public class Paquete
      *  (leer enunciado)
      */
     public String toString() {
-        //TODO
-       return null;
-
+        String texto;
+        texto = String.format("Descripción del paquete\n%20s%10.2f(cm)\n%20s%10.2f(cm)", "Alto:", dimension.getAlto(), "Ancho:", dimension.getAncho());
+        texto += String.format("\n%20s%10.2f(cm)\n%20s%10.2f(Kg)","Largo:",dimension.getLargo(), "Peso real:", peso);
+        texto += String.format("\n%20s%10.2f(cm3)\n%20s%10.2f(Kg)", "Volumen:", calcularVolumen(), "Peso volumétrico:",calcularPesoVolumetrico());
+        return texto;
     }
     
     /**
