@@ -90,7 +90,7 @@ public class Envio
     public void addPaquete(Paquete paquete) {
        if (getNumeroPaquetes() == 3) 
        {
-           System.out.print("No se admiten más paquetes en el envío.");    
+           System.out.print("No se admiten más paquetes en el envío.\n");    
        }
        else if (getNumeroPaquetes() == 2)
        {
@@ -118,7 +118,15 @@ public class Envio
      *  
      */
     public double calcularCosteTotalEnvio() {
-       double suma = paquete1.calcularPesoFacturable() + paquete2.calcularPesoFacturable() + paquete3.calcularPesoFacturable();
+       double suma = 0;
+       switch(getNumeroPaquetes()) {
+           case 1: suma = paquete1.calcularPesoFacturable();
+               break;
+           case 2: suma = paquete1.calcularPesoFacturable() + paquete2.calcularPesoFacturable();
+               break;
+           case 3: suma = paquete1.calcularPesoFacturable() + paquete2.calcularPesoFacturable() + paquete3.calcularPesoFacturable();
+               break;
+       }
        double precio = Math.ceil(suma) * PRECIO_KILO;
        return precio;
     }
@@ -130,10 +138,20 @@ public class Envio
      */
     public String toString() {
        String text = String.format("Nº de paquetes: %1d\n", getNumeroPaquetes());
-       text += paquete1.toString();
-       text += paquete2.toString();
-       text += paquete3.toString();
+       switch(getNumeroPaquetes()) {
+           case 0: text += "No hay paquetes\n";
+               break;
+           case 1: text += paquete1.toString();
+               break;
+           case 2: text += paquete1.toString();
+                   text += paquete2.toString();
+                break;
+           default: text += paquete1.toString();
+                   text += paquete2.toString();
+                   text += paquete3.toString();
+       }
        text += String.format("\n%20s%10.2f€", "Coste total envío:", calcularCosteTotalEnvio());
+       text += "\n--------------------------------------";
        return text;
     }
 
@@ -145,6 +163,4 @@ public class Envio
     public void print() {
         System.out.println(this.toString());
     }
-
-    
 }

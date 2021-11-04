@@ -16,12 +16,11 @@ public class TestEnvio
         Envio envio = new Envio();
         envio.addPaquete(paquete1);
         envio.addPaquete(paquete2);
-        //envio.print();
+        envio.print();
         Dimension dimension = new Dimension(50,50,70);
         Paquete paquete3 = new Paquete(dimension,13);
         envio.addPaquete(paquete3);
-        //envio.print();
-        envio.addPaquete(paquete2.obtenerCopia());
         envio.print();
+        envio.addPaquete(paquete2.obtenerCopia());
     }
 }
